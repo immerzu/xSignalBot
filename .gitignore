@@ -1,0 +1,7 @@
+# Lokale, private Daten - NIE committen (Telefonnummern, Chats, State, Logs)
+*.json
+*.png
+logs/
+__pycache__/
+*.pyc
+.link-finished
