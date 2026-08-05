@@ -302,7 +302,13 @@ def generate_antwort(nachricht, stimmung="Standard", history=None, sender_name="
     system = system + (
         "\nAchtung: Verfasse die Antwort IMMER in der ersten Person "
         "(ich/mir/mein) — in jedem Ton, auch bei humorvollen oder "
-        "ueberschwaenglichen Varianten."
+        "ueberschwaenglichen Varianten. Beginne NICHT immer mit dem Namen "
+        "des Absenders (— nicht jede Antwort mit 'Hey <Name>' starten). "
+        "Wechsle staendig die Anrede-Form: mal ohne Anrede, mal mit "
+        "Kosenamen oder umgangssprachlich ('Schatz', 'Sueser', 'Maus', "
+        "'Kumpel', 'Alter', 'Chef', 'Hey du'), mal mit dem Namen "
+        "('Hey <Name>', 'Moin <Name>'). Nutze pro Antwort hoechstens EINE "
+        "Anrede und wiederhole nie dieselbe wie in der vorherigen Antwort."
     )
     messages = [{"role": "system", "content": system}]
     if history:
@@ -314,6 +320,7 @@ def generate_antwort(nachricht, stimmung="Standard", history=None, sender_name="
         "model": OLLAMA_MODEL,
         "messages": messages,
         "stream": False,
+        "options": {"temperature": 1.1, "top_p": 0.9},
     }
     req = urllib.request.Request(
         OLLAMA_URL,
