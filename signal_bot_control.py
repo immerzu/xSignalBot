@@ -955,7 +955,7 @@ class ControlPanel:
         damit keine echten Telefonnummern im Code stehen.
         """
         whitelist = load_whitelist()
-        test_sender = whitelist[0] if whitelist else "+0000000000000"
+        test_sender = sorted(whitelist)[0] if whitelist else "+0000000000000"
         self.show_message(
             test_sender,
             "Hallo! Das ist eine Testnachricht fuer das Signal-Bot-Fenster.",
